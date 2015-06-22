@@ -1,0 +1,59 @@
+#wpadminbar .parent:before {
+  margin-top:5px;
+  float:right;
+  left: 12px;
+  font: normal 20px/1 'dashicons';
+  content: '\f142';
+}
+
+#wpadminbar .description{
+  border:1px solid #fafafa;
+  background:#fff;
+  border-radius:3px;
+  padding:12px;
+  color:#333;
+}
+
+#wpadminbar .mark-completed{font-weight:bold;}
+
+#wpadminbar .button-group.button-hero .button, 
+#wpadminbar .button.button-hero {
+    font-size: 14px;
+    height: 46px;
+    line-height: 44px;
+    padding: 0 36px;
+}
+#wpadminbar .button-primary {
+    background: #00a0d2 none repeat scroll 0 0;
+    border-color: #0073aa;
+    box-shadow: 0 1px 0 rgba(120, 200, 230, 0.5) inset, 0 1px 0 rgba(0, 0, 0, 0.15);
+    color: #fff;
+    text-decoration: none;
+}
+
+#wpadminbar .button, 
+#wpadminbar .button-primary, 
+#wpadminbar .button-secondary {
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    height: 28px;
+    line-height: 26px;
+    margin: 0;
+    padding: 0 10px 1px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+a, div {
+    outline: 0 none;
+}
+a {
+    color: #0073aa;
+    transition-duration: 0.05s;
+    transition-property: border, background, color;
+    transition-timing-function: ease-in-out;
+}

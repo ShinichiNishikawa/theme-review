@@ -17,7 +17,7 @@ Text Domain: theme-review
  */
 add_action( 'admin_menu', 'theme_review_add_page' );
 function theme_review_add_page() {
-	  $page_hook_suffix = add_submenu_page( 'themes.php', __( 'Theme Review', 'theme-review' ), __( 'Theme Review', 'theme-review' ), 'manage_options', 'theme_review', 'theme_review_do_page' );
+	  $page_hook_suffix = add_submenu_page( 'tools.php', __( 'Theme Review', 'theme-review' ), __( 'Theme Review', 'theme-review' ), 'manage_options', 'theme_review', 'theme_review_do_page' );
 	  add_action('admin_print_scripts-' . $page_hook_suffix, 'theme_review_admin_scripts');
 }
 
@@ -27,10 +27,26 @@ function theme_review_admin_scripts() {
 
 add_action( 'plugins_loaded', 'theme_review_load_textdomain' );
 function theme_review_load_textdomain() {
-  load_plugin_textdomain( 'theme-review', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
+	load_plugin_textdomain( 'theme-review', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
 }
 
-include( plugin_dir_path( __FILE__ ) . 'customizer.php');
+/* Script to expand the requriement information boxes 
+* We need this wherever the admin bar is loaded.
+*/
+function theme_review_bar_scripts() {
+		if ( is_admin_bar_showing() ){
+			wp_enqueue_style('theme-review-dropdown-style', plugins_url( '/dropdownstyle.css', __FILE__ ) );
+			wp_enqueue_script( 'theme-review-dropdown', plugins_url( '/js/dropdown.js', __FILE__ ), array( 'jquery' ) );
+		}
+}
+add_action( 'wp_enqueue_scripts', 'theme_review_bar_scripts' );
+/* Admin side*/
+add_action( 'admin_enqueue_scripts', 'theme_review_bar_scripts' );
+
+
+include( plugin_dir_path( __FILE__ ) . 'customizer.php'); 
+include( plugin_dir_path( __FILE__ ) . 'dropdown.php');
+//include( plugin_dir_path( __FILE__ ) . 'settings-api-test.php');
 
 /**
  * Create the page
