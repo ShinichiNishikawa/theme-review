@@ -1,10 +1,36 @@
-#wpadminbar .parent:before {
+
+#theme-review-dropdown{
+  width:500px; 
+  overflow:auto; 
+  background:#32373c; 
+  padding:15px 20px; 
+  margin:-6px -20px;
+
+}
+
+#theme-review-dropdown .theme-review-header:before {
   margin-top:5px;
   float:right;
   left: 12px;
   font: normal 20px/1 'dashicons';
-  content: '\f142';
+  content: '\f140';
 }
+
+#theme-review-dropdown  .switch:before {
+  margin-top:5px;
+  float:right;
+  left: 12px;
+  font: normal 20px/1 'dashicons';
+  content: "\f163";
+}
+
+
+#theme-review-dropdown .theme-review-header{
+  font-weight:bold;
+  border-bottom: 1px solid #424b54;
+  height:36px;
+}
+
 
 #wpadminbar .description{
   border:1px solid #fafafa;
@@ -51,9 +77,21 @@
 a, div {
     outline: 0 none;
 }
-a {
-    color: #0073aa;
+
+#wpadminbar .description a{
+    color: #0073aa !important;
+    margin:0 !important;
+    height:18px !important;
+    line-height:22px;
+    padding:0;
     transition-duration: 0.05s;
     transition-property: border, background, color;
     transition-timing-function: ease-in-out;
 }
+
+#wpadminbar .description span .dashicons{
+  font: normal 20px/1 'dashicons';
+  display:block;
+  }
+
+code{background:#e8e8e8;}

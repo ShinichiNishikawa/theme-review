@@ -43,10 +43,7 @@ add_action( 'wp_enqueue_scripts', 'theme_review_bar_scripts' );
 /* Admin side*/
 add_action( 'admin_enqueue_scripts', 'theme_review_bar_scripts' );
 
-
-include( plugin_dir_path( __FILE__ ) . 'customizer.php'); 
 include( plugin_dir_path( __FILE__ ) . 'dropdown.php');
-//include( plugin_dir_path( __FILE__ ) . 'settings-api-test.php');
 
 /**
  * Create the page
@@ -66,7 +63,7 @@ function theme_review_do_page() {
 <div class="welcome-panel"><h1><?php _e( 'Theme Review', 'theme-review' );?></h1>	
 <div title="<?php _e('Click to toggle','theme-review');?>" class="handlediv"><br></div>
 	<div class="welcome-panel-content">
-	<p class="about-description"><?php _e('This plugin is designed to be a compliment to the Theme Review guidelines and as a guide to help you with your first theme review.','theme-review');?></p>
+	<p class="about-description"><?php _e('This plugin is designed to be a compliment to the Theme Review guidelines and a guide to help you with your first theme review.','theme-review');?></p>
 		<div class="welcome-panel-column-container">
 			<div class="welcome-panel-column" style="width:65%;">
 			<h3><b><?php _e('Preparing for your review','theme-review');?></b></h3>
@@ -110,7 +107,7 @@ function theme_review_do_page() {
 				<?php printf( __('-If this is not your ticket, <a href="%s">install and activate the correct theme.</a>', 'theme-review'), esc_url( admin_url('themes.php') ) );?><br></h5>
 				<h4><?php _e( 'Ticket? -What ticket?','theme-review');?></h4>
 				<?php _e( 'A theme trac ticket is a ticket with information about a theme that has been submitted to WordPress.org.','theme-review');?><br>
-				<?php _e( 'If this is your first review, you might be more comfortable reviewing our test theme that you can download here: (add link to doing it wrong).','theme-review');?><br><br>
+				<?php printf( __( 'If this is your first review, you might be more comfortable reviewing our test theme that you can download <a href="%s">here</a>.', 'theme-review'), esc_url('https://github.com/WPTRT/doingitwrong') );?><br><br>
 				<?php printf( __('If you are ready to take on a real ticket, please <a href="%s"><button class="make-request">Request a theme to review.</button></a>', 'theme-review'), esc_url( 'https://make.wordpress.org/themes/' ) );?>
 				<?php printf( __('You will then find your tickets here: <a href="%s">https://themes.trac.wordpress.org</a>.', 'theme-review'), esc_url( 'https://themes.trac.wordpress.org/query?status=!closed&owner=$USER' ) );?>
 				<br><br>
@@ -135,24 +132,28 @@ function theme_review_do_page() {
 <div class="welcome-panel">			
 	<h2><b><?php _e('Performing your review','theme-review');?></b></h2>
 	<div title="<?php _e('Click to toggle','theme-review');?>" class="handlediv"><br></div>
-	<div class="welcome-panel-content">
-		<h5><?php printf( __('The full guidelines that you will review the theme against can be found <a href="%s">here.</a>', 'theme-review'), esc_url( 'https://make.wordpress.org/themes/handbook/review/required/' ));
-			echo ' ' . __('The plugin should only be seen as a complement to the guidelines.','theme-review');?>
-		</h5><br>
+		<div class="welcome-panel-content">
+			<h5><?php printf( __('The full guidelines that you will review the theme against can be found <a href="%s">here.</a>', 'theme-review'), esc_url( 'https://make.wordpress.org/themes/handbook/review/required/' ));
+				echo ' ' . __('The plugin should only be seen as a complement to the guidelines.','theme-review');?>
+			</h5><br>
+			<?php _e('You should now have your theme folder and your code editor ready so that you can easilly check the files.','theme-review');?>
+			<br>
 			<?php 
 			echo __('<b>What you will be checking:</b>','theme-review') . '<br>' .
 			__('There is more to a review than checking if the content is displayed nicely. You will be checking if the theme is <b>secure</b>, 
 			if there are any <b>errors</b>, if it is <b>translatable</b> and if all theme <b>options</b> are working correctly.<br>','theme-review');
 			_e('You will be reading a lot of code, and one theme will have a different setup than the other, but don\'t worry, this becomes easier as you gain more experience.<br>','theme-review');
 			echo __('<b>Reviewing a theme with the help of the plugin:</b>','theme-review') . '<br>';
-			echo __('Each section under the Theme Review panel in the customizer represents a requirement, accompanied with a short statement or a question.','theme-review') . '<br>'
-			 . __('Once a check has been completed, it will be added to the progress and summary below.','theme-review');
+			echo __('You will find a new menu in the admin bar to your top right. Each section in the menu represents a requirement, accompanied by a short statement or a question.','theme-review') . '<br>'
+			 . __('Once a check has been completed, save your progress and it will be added to the summary below.','theme-review');
 
 			echo '<br><i>' . __('Example:','theme-review') . '</i><br>';
-			echo '<img src="' . esc_url( plugins_url( 'lang.png', __FILE__ ) ) . '" alt="' . __('An image showing what a section looks like.','theme-review') . '" > ';
-			echo '<br><i>' . __('Anything in red is a required item that should be noted in your review.','theme-review') . '</i><br><br>';
+			echo '<img src="' . esc_url( plugins_url( 'lang.png', __FILE__ ) ) . '" alt="" > ';
+			echo '<br><i>' . __('Anything in red is a required item that should be noted in your review.','theme-review') . '</i><br>';
+			echo __('You should now be able to start your review, so open the theme and start checking those buttons. Some of the sections has additional information, examples and links that can help you on your way.','theme-review')  . '<br><br>';
+
 			echo '<h3><b>'. __('Writing your review','theme-review') . '</b></h3>';
-			echo __('You should take notes as you review each part of the theme, and write down any questions that you have for the author.','theme-review') . '<br>' . 
+			echo __('Take notes as you review each part of the theme, and write down any questions that you have for the author.','theme-review') . '<br>' . 
 			__('The suggested format for your review is as follows:','theme-review') . '<br>';
 			echo '<ul><li><b>' . __('Welcome wrapper.','theme-review') . '</b> ' . __('Say Hi to the author, let them know what you are going to do. This may be their first review.','theme-review') . '</li>' .
 				'<li><b>' . __('Say the outcome.','theme-review') . '</b> ' . __('Let the author know from the start what the outcome is.','theme-review') . '</li>' .
@@ -173,50 +174,70 @@ function theme_review_do_page() {
 	</div>
 </div>
 
-<div class="ready-button">
-<h3><?php _e('You should now have your theme folder and your code editor ready so that you can easilly check the files.','theme-review');?></h3>
-<a href="customize.php" class="button button-primary button-hero"><?php _e('I understand, take me to the customizer.','theme-review');?></a>
-<br><br>
-</div>
-<h2><?php _e('Summary:','theme-review');?></h2>
+<br><h2><?php _e('Summary:','theme-review');?></h2>
 <hr>
 <?php
-$license = esc_attr( get_theme_mod('theme_review_license', __('Not completed','theme-review') ) );
-$links = esc_attr( get_theme_mod('theme_review_links', __('Not completed','theme-review') ) );
-$lang = esc_attr( get_theme_mod('theme_review_lang', __('Not completed','theme-review') ) );
-$scripts =  esc_attr( get_theme_mod('theme_review_scripts', __('Not completed','theme-review') ) );
-$errors = esc_attr( get_theme_mod('theme_review_errors', __('Not completed','theme-review') ) );
-$core = esc_attr( get_theme_mod('theme_review_core', __('Not completed','theme-review') ) );
-$custom = esc_attr( get_theme_mod('theme_review_custom', __('Not completed','theme-review') ) );
-$content = esc_attr( get_theme_mod('theme_review_content', __('Not completed','theme-review') ) );
-$hooks = esc_attr( get_theme_mod('theme_review_hooks', __('Not completed','theme-review') ) );
-$prefix = esc_attr( get_theme_mod('theme_review_prefix', __('Not completed','theme-review') ) );
-$escaping = esc_attr( get_theme_mod('theme_review_escaping', __('Not completed','theme-review') ) );
-$misc = esc_attr( get_theme_mod('theme_review_misc', __('Not completed','theme-review') ) );
+$code = esc_attr( get_option('theme_review_code', __('Not completed','theme-review') ) );
+	$prefix = esc_attr( get_option('theme_review_prefix', __('Not completed','theme-review') ) );
+	$sanitize = esc_attr( get_option('theme_review_sanitize', __('Not completed','theme-review') ) );
+	$hooks = esc_attr( get_option('theme_review_hooks', __('Not completed','theme-review') ) );
 
- echo '<h3>' . __( 'Naming and Licensing', 'theme-review' ) . ': <i class="' . $license . '">' . $license . '</i></h3>';
- echo '<h3>' . __( 'Links', 'theme-review' ) . ': <i class="' . $links . '">' . $links . '</i></h3>';
+$core = esc_attr( get_option('theme_review_core', __('Not completed','theme-review') ) );
+	$tags = esc_attr( get_option('theme_review_tags', __('Not completed','theme-review') ) );
 
+$presentation = esc_attr( get_option('theme_review_presentation', __('Not completed','theme-review') ) );
+
+$documentation = esc_attr( get_option('theme_review_documentation', __('Not completed','theme-review') ) );
+$favicons = esc_attr( get_option('theme_review_favicons', __('Not completed','theme-review') ) );
+$lang = esc_attr( get_option('theme_review_lang', __('Not completed','theme-review') ) );
+$license = esc_attr( get_option('theme_review_licensing', __('Not completed','theme-review') ) );
+
+$options = esc_attr( get_option('theme_review_options', __('Not completed','theme-review') ) );
+$screenshot = esc_attr( get_option('theme_review_screenshot', __('Not completed','theme-review') ) );
+$security = esc_attr( get_option('theme_review_security', __('Not completed','theme-review') ) );
+$links = esc_attr( get_option('theme_review_links', __('Not completed','theme-review') ) );
+
+$scripts =  esc_attr( get_option('theme_review_scripts', __('Not completed','theme-review') ) );
+
+$escaping = esc_attr( get_option('theme_review_escaping', __('Not completed','theme-review') ) );
+$misc = esc_attr( get_option('theme_review_misc', __('Not completed','theme-review') ) );
+
+ 
+
+ echo '<br><br>The summary of the following section still needs to be edited. /Carolina<br><hr><br>';
+
+
+
+ echo '<h2>' . __( 'Code', 'theme-review' ) . ': <i class="' . $code . '">' . $code . '</i></h2>';
+ 	echo '<h3 style="margin-left:22px;">' . __( 'Prefix', 'theme-review' ) . ': <i class="' . $prefix . '">' .  $prefix . '</i></h3>';
+ 	echo '<h3 style="margin-left:22px;">' . __( 'Sanitize', 'theme-review' ) . ': <i class="' . $prefix . '">' .  $prefix . '</i></h3>';
+	echo '<h3 style="margin-left:22px;">' . __( 'Hooks', 'theme-review' ) . ': <i class="' . $hooks . '">' . $hooks . '</i></h3>';
+
+ echo '<h2>' . __( 'Core functionality', 'theme-review' ) . ': <i class="' . $core . '">' . $core  . '</i></h2>';
+ 			echo '<h3 style="margin-left:22px;">' . __( 'Tags', 'theme-review' ) . ': <i class="' . $tags . '">' . $tags . '</i></h3>';
+
+ echo '<h2>' . __( 'Presentation vs Functionality & Plugins', 'theme-review' ) . ': <i class="' . $presentation . '">' . $presentation  . '</i></h2>';
+
+ echo '<h3>' . __( 'Documentation', 'theme-review' ) . ': <i class="' . $documentation . '">' . $documentation  . '</i></h3>';
+ echo '<h3>' . __( 'Favicons', 'theme-review' ) . ': <i class="' . $favicons . '">' . $favicons  . '</i></h3>';
  echo '<h3>' . __( 'Language', 'theme-review' ) . ': <i class="' . $lang . '">' . $lang . '</i></h3>';
+ echo '<h3>' . __( 'Naming and Licensing', 'theme-review' ) . ': <i class="' . $license . '">' . $license . '</i></h3>';
+
+ echo '<h2>' . __( 'Options and Settings', 'theme-review' ) . ': <i class="' . $options . '">' . $options  . '</i></h2>';
+ echo '<h3>' . __( 'Screenshot', 'theme-review' ) . ': <i class="' . $screenshot . '">' . $screenshot . '</i></h3>';
+ echo '<h3>' . __( 'Security and Privacy', 'theme-review' ) . ': <i class="' . $security . '">' . $security . '</i></h3>';
+ echo '<h3>' . __( 'Selling, credits and links', 'theme-review' ) . ': <i class="' . $links . '">' . $links . '</i></h3>';
+
  echo '<h3>' . __( 'Stylesheets and Scripts', 'theme-review' ) . ': <i class="' . $scripts . '">' . $scripts . '</i></h3>';
 
- echo '<h3>' . __( 'Errors, warnings and notices', 'theme-review' ) . ': <i class="' . $errors. '">' . $errors . '</i></h3>';
- echo '<h3>' . __( 'Core functionality', 'theme-review' ) . ': <i class="' . $core . '">' . $core  . '</i></h3>';
-
- echo '<h3>' . __( 'Custom functionality and options', 'theme-review' ) . ': <i class="' . $custom .'">' . $custom . '</i></h3>';
- echo '<h3>' . __( 'Custom content creation', 'theme-review' ) . ': <i class="' . $content  . '">' .  $content  . '</i></h3>';
-
- echo '<h3>' . __( 'Hooks', 'theme-review' ) . ': <i class="' . $hooks . '">' . $hooks . '</i></h3>';
- echo '<h3>' . __( 'Prefixing', 'theme-review' ) . ': <i class="' . $prefix . '">' .  $prefix . '</i></h3>';
-
- echo '<h3>' . __( 'Sanitizing and escaping', 'theme-review' ) . ': <i class="' . $escaping . '">' . $escaping . '</i></h3>';
+ echo '<h3>' . __( 'Escaping', 'theme-review' ) . ': <i class="' . $escaping . '">' . $escaping . '</i></h3>';
  echo '<h3>' . __( 'Miscellaneous', 'theme-review' ) . ': <i class="' . $misc . '">' . $misc . '</i></h3>';
 
 
    $trt_theme = wp_get_theme();
     $trt_tags =$trt_theme->get( 'Tags' );
     if (in_array ('accessibility-ready' , $trt_tags) ){
-    	 echo '<br><h3>' . __( 'Note:','theme-review') . '</h3> ' . __('This theme has an accessibility-ready tag and it needs an additional review by an accessibility expert. It is important that you do not close the ticket when you are finished with the basic review.','theme-review');
+    	 echo '<br><h3>' . __( 'Note:','theme-review') . '</h3> ' . __('<b>This theme has an accessibility-ready tag and it needs an additional review by an accessibility expert. It is important that you do not close the ticket when you are finished with the basic review.</b>','theme-review');
     }
 ?>
 
