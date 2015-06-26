@@ -233,6 +233,9 @@ foreach ($requirements as $req) {
 } //end for each
     
     $dropdown_section = '<div id="theme-review-dropdown">
+    	<div class="theme-review-fix-wrap">
+    		<label class="theme-review-fix" for="theme-review-fix"><input type="checkbox" id="theme-review-fix" name="theme-review-fix" /> ' . __( 'Fix this check list.', 'theme-review' ) . '</label>
+    	</div>
     	<form method="POST">
       	<ul>'
         	. $content .

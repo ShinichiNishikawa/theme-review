@@ -3,10 +3,12 @@
   width:500px; 
   overflow:auto; 
   background:#32373c; 
-  padding:20px; 
+  padding:20px 30px 20px 20px; 
   margin:-6px -20px;
   white-space: normal;
   height:1400px;
+  position: fixed;
+  right: 0;
 }
 
 #theme-review-dropdown .theme-review-header:before {
@@ -113,4 +115,8 @@ a, div {
 
 #theme-review-dropdown .theme-review-indent{
   margin-left:22px;
+}
+
+#theme-review-dropdown .theme-review-fix-wrap {
+	text-align: right;
 }
