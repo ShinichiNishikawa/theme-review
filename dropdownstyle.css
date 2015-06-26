@@ -3,9 +3,10 @@
   width:500px; 
   overflow:auto; 
   background:#32373c; 
-  padding:15px 20px; 
+  padding:20px; 
   margin:-6px -20px;
-
+  white-space: normal;
+  height:1400px;
 }
 
 #theme-review-dropdown .theme-review-header:before {
@@ -16,7 +17,8 @@
   content: '\f140';
 }
 
-#theme-review-dropdown  .switch:before {
+/*switch icons*/
+#theme-review-dropdown  .theme-review-switch:before {
   margin-top:5px;
   float:right;
   left: 12px;
@@ -31,16 +33,7 @@
   height:36px;
 }
 
-
-#wpadminbar .description{
-  border:1px solid #fafafa;
-  background:#fff;
-  border-radius:3px;
-  padding:12px;
-  color:#333;
-}
-
-#wpadminbar .mark-completed{font-weight:bold;}
+#wpadminbar .theme-review-mark-completed{font-weight:bold;}
 
 #wpadminbar .button-group.button-hero .button, 
 #wpadminbar .button.button-hero {
@@ -78,20 +71,46 @@ a, div {
     outline: 0 none;
 }
 
-#wpadminbar .description a{
+
+#wpadminbar .theme-review-description{
+  overflow:auto; 
+  border:1px solid #fafafa;
+  background:#fff;
+  border-radius:3px;
+  padding:12px;
+  color:#333;
+} 
+#wpadminbar .theme-review-description a{
     color: #0073aa !important;
     margin:0 !important;
     height:18px !important;
     line-height:22px;
     padding:0;
+    display:inline-block;
     transition-duration: 0.05s;
     transition-property: border, background, color;
     transition-timing-function: ease-in-out;
 }
 
-#wpadminbar .description span .dashicons{
+#wpadminbar .theme-review-description span .dashicons{
   font: normal 20px/1 'dashicons';
   display:block;
   }
 
-code{background:#e8e8e8;}
+#theme-review-dropdown code{ 
+    background: #eee;
+    font-family: Consolas,Monaco,monospace;
+    font-size: 90%;
+    margin: 0 3px 0 1px;
+    padding: 3px 5px 3px;
+    position: relative;
+    top: -1px;
+  }
+
+#theme-review-dropdown i{
+  font-style: italic;
+}
+
+#theme-review-dropdown .theme-review-indent{
+  margin-left:22px;
+}
